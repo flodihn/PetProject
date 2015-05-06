@@ -23,6 +23,8 @@ Debug/
 Release/
 bin/
 obj/
+PetProject.exe
+PetProject_Data
 ~*
 
 # ============ #
