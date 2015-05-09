@@ -21,9 +21,7 @@ public class PetRenderer : MonoBehaviour, PetDataObserver {
 		sprites = Resources.LoadAll(petData.spriteSheet, typeof(Sprite)).Cast<Sprite>().ToArray();
 		
 		if(sprites == null)
-			Debug.Log("FAILED TO LOAD SPRITESHEET");
-		else
-			Debug.Log("Loaded " + sprites.Count().ToString() + " sprites.");
+			Debug.Log("FAILED TO LOAD SPRITESHEET: " + petData.spriteSheet);
 	}
 	
 	public void OnSpriteChanged() {

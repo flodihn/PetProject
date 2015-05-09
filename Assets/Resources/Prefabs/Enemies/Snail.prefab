@@ -39,7 +39,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fe3449f55cee2e44bd5b13ead97bea4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteSheet: Sprites/Enemies/Snail
+  sprite: Sprites/Enemies/Snail
   elemental: 0
   type: 0
   str: 1

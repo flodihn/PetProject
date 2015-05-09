@@ -37,6 +37,9 @@ public static class PlayerData {
 	public static GameObject electricityEliteEnemy;
 	public static GameObject[] bossEnemies = new GameObject[5];
 	
+	public static GameObject currentFightningEnemyObj;
+	public static GameObject currentDefeatedEnemyObj;
+	
 	public static int activeEnemyArea = 0; 
 	private static int numGold = 0;
 	
@@ -134,8 +137,6 @@ public static class PlayerData {
 	
 	private static void AddCommonEnemy(GameObject enemy) {
 		for(int i = 0; i < commonEnemies.Length; i++) {
-			if(i == (int) EnemySlots.ELITE_SLOT)
-				continue;
 			if(commonEnemies[i] == null) {
 				commonEnemies[i] = enemy;
 				CallCommonEnemyChangedInObservers();
@@ -206,6 +207,10 @@ public static class PlayerData {
 			}
 		}
 		GameObject.Destroy(enemy);
+	}
+	
+	public static void SetDefeatedEnemy() {
+		currentDefeatedEnemyObj = currentFightningEnemyObj;
 	}
 	
 	private static void CallGoldChangedInObservers() {

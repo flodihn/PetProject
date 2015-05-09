@@ -6,6 +6,11 @@ public class TestGUI : MonoBehaviour {
 	public GameObject[] foodItems;
 	public GameObject[] commonEnemies;
 	PetData petData;
+	GameFlow gameFlow;
+	
+	void Start() {
+		gameFlow = GameObject.FindGameObjectWithTag("GameFlow").GetComponent<GameFlow>();
+	}
 	
 	public void AddGold(int amount) {
 		PlayerData.AddGold(amount);
@@ -60,4 +65,14 @@ public class TestGUI : MonoBehaviour {
 		PlayerData.AddEnemy(enemy);
 	}
 	
+	public void QuickWin() {
+		PlayerData.SetDefeatedEnemy();
+		gameFlow.SwitchState(GameState.PICK_REWARD, SwipeDir.LEFT);
+	}
+	
+	public void QuickDie() {
+		petData = GameObject.FindGameObjectWithTag("Pet").GetComponent<PetData>();
+		petData.SetLife(1);
+		gameFlow.SwitchState(GameState.MAIN, SwipeDir.LEFT);
+	}
 }

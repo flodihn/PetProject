@@ -115,7 +115,13 @@ public class GameFlow : MonoBehaviour {
 			case GameState.STATS:
 				stateToSwitchOnNextFrame = statsState;
 				break;
-			case GameState.MAIN: default:
+			case GameState.BATTLE_ARENA:
+				stateToSwitchOnNextFrame = battleArenaState;
+				break;
+			case GameState.PICK_REWARD:
+				stateToSwitchOnNextFrame = pickRewardState;
+				break;
+		case GameState.MAIN: default:
 				stateToSwitchOnNextFrame = mainState;
 				break;
 		}

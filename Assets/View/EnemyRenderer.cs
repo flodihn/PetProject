@@ -4,11 +4,11 @@ using System.Collections;
 
 public class EnemyRenderer : MonoBehaviour {
 	private Image image;
-	private ConsumableData data;
+	private EnemyData data;
 	
 	void Start() {
 		image = GetComponent<Image>();
-		data = GetComponent<EnemyData>();
+		data = PlayerData.currentFightningEnemyObj.GetComponent<EnemyData>();
 		image.sprite = Resources.Load(data.sprite, typeof(Sprite)) as Sprite;
 	}
 }

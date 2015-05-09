@@ -58,19 +58,62 @@ public class PickFightState : State, IPlayerDataObserver, ControllerObserver {
 	public void OnGoldChanged() {}
 	public void OnFoodChanged() {}
 	public void OnToysChanged() {}
+	
 	public void OnCommonEnemyChanged() {
-		Debug.Log ("Foobar");
+		UpdateCommonEnemies();
 	}
+	
 	public void OnNatureEnemyChanged() {}
 	public void OnWaterEnemyChanged() {}
 	public void OnFireEnemyChanged() {}
 	public void OnFireElectricityChanged() {}
 	
-	void UpdateEnemies() {
+	void UpdateCommonEnemies() {
 		for(int i = 0; i < PlayerData.commonEnemies.Length; i++) {
 			if(PlayerData.commonEnemies[i] == null)
 				continue;
 			EnemyData enemyData = PlayerData.commonEnemies[i].GetComponent<EnemyData>();
+			Sprite enemySprite = Resources.Load(enemyData.sprite, typeof(Sprite)) as Sprite;
+			commonEnemyButtons[i].GetComponent<Image>().sprite = enemySprite;
 		}
+	}
+	
+	public void FightEnemy1() {
+		FightEnemyAtIndex(0);
+	}
+	
+	public void FightEnemy2() {
+		FightEnemyAtIndex(1);
+	}
+	
+	public void FightEnemy3() {
+		FightEnemyAtIndex(2);
+	}
+	
+	public void FightEnemy4() {
+		FightEnemyAtIndex(3);
+	}
+	
+	public void FightEnemy5() {
+		FightEnemyAtIndex(4);
+	}
+	
+	public void FightEnemy6() {
+		FightEnemyAtIndex(5);
+	}
+	
+	public void FightEnemy7() {
+		FightEnemyAtIndex(6);
+	}
+	
+	public void FightEnemy8() {
+		FightEnemyAtIndex(7);
+	}
+	
+	private void FightEnemyAtIndex(int index) {
+		if(PlayerData.commonEnemies[0] == null)
+			return;
+		PlayerData.currentFightningEnemyObj = PlayerData.commonEnemies[0];
+		gameFlow.SwitchState(GameState.BATTLE_ARENA, SwipeDir.LEFT);
 	}
 }
